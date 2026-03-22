@@ -3,59 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>楊凱茜 Cassie - 個人履歷</title>
-    <style>
-        body { font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; background-color: #fafafa; color: #333; display: flex; justify-content: center; padding: 20px; }
-        .resume-container { background: white; width: 100%; max-width: 500px; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 8px solid #d4a3a3; }
-        .avatar-box { width: 80px; height: 80px; background: #d4a3a3; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; font-weight: bold; margin-bottom: 15px; }
-        .student-id { color: #999; font-size: 13px; margin-bottom: 20px; letter-spacing: 0.5px; }
-        .student-id span { background: #f0f0f0; color: #666; padding: 3px 10px; border-radius: 20px; margin-left: 8px; font-size: 11px; }
-        h1 { margin: 0; font-size: 28px; letter-spacing: 2px; color: #444; }
-        .subtitle { color: #888; margin: 8px 0 25px 0; font-size: 16px; font-weight: 300; }
-        h2 { font-size: 18px; color: #d4a3a3; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; margin-top: 30px; letter-spacing: 1px; }
-        p, li { font-size: 15px; line-height: 1.8; color: #555; }
-        .grid { display: flex; justify-content: space-between; }
-        .grid-item { width: 48%; }
-        .footer-btns { margin-top: 40px; display: flex; gap: 15px; }
-        .btn { flex: 1; padding: 12px; border-radius: 30px; border: 1px solid #eee; cursor: pointer; font-size: 14px; transition: 0.3s; }
-        .btn-primary { background: #d4a3a3; color: white; border: none; }
-        .btn-primary:hover { background: #c28e8e; }
-    </style>
+    <title>Jaycie Yang - Fashion Designer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="resume-wrapper">
+        
+        <aside class="sidebar">
+            <div class="profile-section">
+                <img src="profile.jpg" alt="楊凱茜 Jaycie" class="profile-pic">
+                <h1 class="name">楊凱茜 <span class="en-name">Jaycie</span></h1>
+                <p class="student-id">STUDENT ID : AU114054044</p>
+                <div class="bio">
+                    <p>對時尚產業充滿熱情，喜歡觀察色彩搭配與織品設計。目前專注於提升美學感知與基礎裁縫技能，希望未來能創作出結合實用性與個人風格的設計作品。</p>
+                </div>
+            </div>
 
-<div class="resume-container">
-    <div class="avatar-box">楊</div>
-    <h1 class="name">楊凱茜 Jaycie</h1> 
-    <div class="student-id">STUDENT ID：AU114054044 <span>已認證</span></div>
-<img src="images/me.jpg" alt="我的照片" style="width: 200px; border-radius: 10px;">    <p>對時尚產業充滿熱情，喜歡觀察色彩搭配與織品設計。目前專注於提升美學感知與基礎裁縫技能，希望未來能創作出結合實用性與個人風格的設計作品。</p>
+            <nav class="contact-info">
+                <h3>聯絡我</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:yks.cathyyang@gmail.com">yks.cathyyang@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0966-222-371</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <a href="https://www.instagram.com/yks._.cathy" target="_blank">yks._.cathy</a>
+                </div>
+            </nav>
+            
+            <div class="portfolio-btn-area">
+                <a href="作品集連結" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-briefcase"></i> 瀏覽完整作品集
+                </a>
+            </div>
+        </aside>
 
-    <h2>教育背景</h2>
-    <p><strong>亞洲大學 Asia University</strong><br>一年級（在學） — 主修：時尚設計</p>
+        <main class="main-content">
+            
+            <section class="education">
+                <h2 class="section-title">教育背景</h2>
+                <div class="edu-item">
+                    <div class="edu-header">
+                        <h3>亞洲大學 Asia University</h3>
+                        <span class="date">2023 - 至今</span>
+                    </div>
+                    <p class="degree">時尚設計學系 | 一年級（在學）</p>
+                    <ul class="edu-details">
+                        <li>主修時尚設計、基礎立體剪裁與色彩學。</li>
+                        <li>校園時尚週活動創意工作坊核心成員。</li>
+                    </ul>
+                </div>
+            </section>
 
-    <div class="grid">
-        <div class="grid-item">
-            <h2>專業技能</h2>
-            <p><strong>設計美學</strong><br>色彩搭配、手繪草圖、流行趨勢分析</p>
-        </div>
-        <div class="grid-item">
-            <h2 style="color:transparent; border:none;">.</h2>
-            <p><strong>軟體應用</strong><br>基礎 HTML/CSS、Microsoft Office 系列</p>
-        </div>
+            <section class="experience">
+                <h2 class="section-title">實作經歷</h2>
+                
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <h3>國立臺灣科學教育館</h3>
+                        <span class="date">2023.01 - 至今</span>
+                    </div>
+                    <p class="role">專業解說員 / 活動企劃助理</p>
+                    <ul class="exp-details">
+                        <li>負責特定展區之台英雙語專業導覽，服務超過 500 位參觀者。</li>
+                        <li>協助企劃與執行兒童科普手作活動，提升展區週末互動率。</li>
+                        <li>跨部門溝通聯繫，確保展項設備維護與展場安全。</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <h3>士林官邸樂活市集</h3>
+                        <span class="date">2022.06</span>
+                    </div>
+                    <p class="role">校園攤位代表 / 品牌行銷代表</p>
+                    <ul class="exp-details">
+                        <li>擔任校園合作品牌現場代表，負責產品介紹與銷售。</li>
+                        <li>管理現場庫存與對帳作業，確保市集營運順暢。</li>
+                        <li>協助制定市集促銷活動，達成單日銷售目標。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="skills">
+                <h2 class="section-title">專業技能</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h4>設計與企劃</h4>
+                        <ul>
+                            <li>色彩搭配與美學感知</li>
+                            <li>手繪草圖與版型基礎</li>
+                            <li>流行趨勢分析與企劃</li>
+                            <li>活動導覽與溝通技巧</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>數位工具</h4>
+                        <ul>
+                            <li>基礎 HTML / CSS 網頁</li>
+                            <li>Microsoft Office 系列</li>
+                            <li>數位影像編輯基礎</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </main>
     </div>
-
-    <h2>實作經歷</h2>
-    <p>• 參與校內時尚週創意工作坊<br>• 基礎服裝製作與版型實作學習中</p>
-
-    <h2>聯絡資訊</h2>
-    <p><strong>Email</strong><br>cassie.yang@asia.edu.tw</p>
-    <p><strong>電話</strong><br>0912-345-678</p>
-
-    <div class="footer-btns">
-        <button class="btn btn-primary" onclick="alert('正下載您的時尚履歷...')">列印 / 另存為 PDF</button>
-        <button class="btn">作品集連結</button>
-    </div>
-</div>
-
 </body>
 </html>
+/* --- 通用設定 --- */
+:root {
+    --bg-color: #f7f9fc;
+    --white: #ffffff;
+    --sidebar-bg: #f8e8e8; /* 保留霧粉色调 */
+    --accent-color: #e5989b; /* 較深的粉色用於強調 */
+    --text-primary: #3d3d3d;
+    --text-secondary: #6c757d;
+    --font-heading: 'Montserrat', 'Noto Sans TC', sans-serif;
+    --font-body: 'Noto Sans TC', sans-serif;
+    --shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* --- 佈局核心 --- */
+.resume-wrapper {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 90vh;
+}
+
+/* --- 左側側邊欄 (固定) --- */
+.sidebar {
+    width: 320px;
+    background-color: var(--sidebar-bg);
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 內容上下撐開 */
+}
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--white);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+
+.name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.en-name {
+    font-weight: 300;
+    color: var(--text-secondary);
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.student-id {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.bio {
+    margin-top: 25px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.contact-info h3 {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.contact-item {
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.contact-item i {
+    width: 25px;
+    color: var(--accent-color);
+    margin-right: 10px;
+    text-align: center;
+}
+
+.contact-item a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: #d88083;
+}
+
+/* --- 右側主內容 --- */
+.main-content {
+    flex: 1;
+    padding: 60px 60px;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    color: #000;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+.edu-item, .exp-item {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.edu-header, .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.edu-header h3, .exp-header h3 {
+    font-size: 1.2rem;
+    color: #222;
+}
+
+.date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.degree, .role {
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.edu-details, .exp-details {
+    list-style-type: none;
+    font-size: 0.95rem;
+    color: #555;
+    padding-left: 10px;
+}
+
+.edu-details li, .exp-details li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+
+.edu-details li::before, .exp-details li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.skill-category h4 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.skill-category ul {
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+.skill-category li {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* --- 手機版自適應 --- */
+@media (max-width: 900px) {
+    .resume-wrapper {
+        flex-direction: column;
+        margin: 0;
+        border-radius: 0;
+    }
+    .sidebar {
+        width: 100%;
+        padding: 40px;
+        align-items: center;
+        text-align: center;
+    }
+    .profile-pic {
+        width: 150px;
+        height: 150px;
+    }
+    .contact-info {
+        margin-top: 30px;
+        text-align: left;
+    }
+    .portfolio-btn-area {
+        margin-top: 30px;
+    }
+    .main-content {
+        padding: 40px;
+    }
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+}
