@@ -9,10 +9,11 @@
     
     <style>
         :root {
-            --primary-pink: #F8C8DC;     /* 柔霧粉 */
+            --primary-pink: #F8C8DC;
             --white: #ffffff;
-            --dark-grey: #5D5D5D;        /* 文字灰 */
-            --accent-yellow: #FEF3C7;    /* 奶油黃 */
+            --dark-grey: #5D5D5D;
+            --accent-yellow: #FEF3C7;
+            --glass-pink: rgba(248, 200, 220, 0.4); /* 半透明粉 */
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,7 +28,7 @@
             min-height: 100vh;
         }
 
-        /* --- 履歷主卡片 --- */
+        /* --- 履歷卡片 --- */
         .resume-card {
             width: 100%;
             max-width: 800px;
@@ -39,7 +40,6 @@
             margin-bottom: 40px;
         }
 
-        /* 頂部粉色頭像區 */
         .pink-header {
             background-color: var(--primary-pink);
             padding: 40px 20px;
@@ -52,201 +52,116 @@
         }
 
         .profile-pic-container {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 5px solid var(--white);
-            background: #eee;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 160px; height: 160px;
+            border-radius: 50%; border: 5px solid var(--white);
+            background: #eee; overflow: hidden;
+            margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .profile-pic-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .profile-pic-container img { width: 100%; height: 100%; object-fit: cover; }
 
         .name { font-size: 2.5rem; font-weight: 700; color: #4A4A4A; margin-bottom: 5px; }
-        
         .id-badge {
-            background: var(--accent-yellow);
-            color: #856404;
-            padding: 6px 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 8px rgba(254, 243, 199, 0.8);
+            background: var(--accent-yellow); color: #856404;
+            padding: 6px 20px; border-radius: 50px;
+            font-weight: 700; font-size: 0.9rem; margin-bottom: 12px;
         }
 
         .english-name {
             font-family: 'Montserrat', sans-serif;
-            color: var(--white);
+            color: #EAB8CC; 
             letter-spacing: 3px;
-            font-size: 1.1rem;
+            font-size: 1.1rem; 
             font-weight: 500;
         }
 
-        /* 聯絡資訊區 (已去掉側邊槓槓) */
-        .contact-section {
-            padding: 0 10px;
-            margin-bottom: 30px;
-        }
-
+        .contact-section { padding: 0 10px; margin-bottom: 30px; }
         .contact-item {
-            background: #FFF5F8;
-            padding: 12px 20px;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: var(--dark-grey);
-            font-size: 1rem;
+            background: #FFF5F8; padding: 12px 20px;
+            border-radius: 10px; margin-bottom: 12px;
+            display: flex; align-items: center; gap: 15px;
+            color: var(--dark-grey); font-size: 1rem;
         }
-
-        .contact-item i { color: #EAB8CC; font-size: 1.1rem; width: 20px; text-align: center; }
+        .contact-item i { color: #EAB8CC; width: 20px; text-align: center; }
 
         .bio-text {
-            color: var(--dark-grey);
-            line-height: 1.8;
-            font-size: 1.05rem;
-            margin: 25px 0;
-            padding: 0 10px;
-            border-left: 3px solid var(--accent-yellow);
-            padding-left: 20px;
+            color: var(--dark-grey); line-height: 1.8;
+            font-size: 1.05rem; margin: 25px 0;
+            padding-left: 20px; border-left: 3px solid var(--accent-yellow);
         }
 
-        /* 標題與內容 */
         .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.4rem;
-            color: #EAB8CC;
-            font-weight: 700;
-            margin: 40px 0 20px 0;
-            display: flex;
-            align-items: center;
+            font-family: 'Montserrat', sans-serif; font-size: 1.4rem;
+            color: #EAB8CC; font-weight: 700; margin: 40px 0 20px 0;
+            display: flex; align-items: center;
         }
+        .section-title::after { content: ""; flex: 1; height: 1px; background: var(--accent-yellow); margin-left: 15px; }
 
-        .section-title::after {
-            content: ""; flex: 1; height: 1px;
-            background: var(--accent-yellow); margin-left: 15px;
-        }
-
-        .content-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 25px;
-        }
-
+        .content-row { display: flex; justify-content: space-between; margin-bottom: 25px; }
         .content-left h3 { font-size: 1.2rem; color: #4A4A4A; }
         .content-left .sub-title { color: #EAB8CC; font-weight: 500; margin: 4px 0; }
-        
         .content-right .date { color: #BBB; font-size: 0.9rem; font-family: 'Montserrat', sans-serif; }
 
-        .details-list {
-            list-style: none;
-            margin-top: 10px;
-        }
+        .details-list { list-style: none; margin-top: 10px; }
+        .details-list li { font-size: 0.95rem; color: var(--dark-grey); margin-bottom: 8px; position: relative; padding-left: 25px; }
+        .details-list li::before { content: "♥"; color: var(--primary-pink); position: absolute; left: 0; }
 
-        .details-list li {
-            font-size: 0.95rem;
-            color: var(--dark-grey);
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .details-list li::before {
-            content: "♥";
-            color: var(--primary-pink);
-            position: absolute;
-            left: 0;
-        }
-
-        /* 技能標籤 */
         .skills-container { display: flex; gap: 40px; }
         .skill-box h4 { font-size: 0.85rem; color: #BBB; margin-bottom: 15px; letter-spacing: 1px; }
         .tag-group { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag {
-            border: 1px solid var(--primary-pink);
-            color: #D896A3;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            background: #FFF;
-        }
+        .tag { border: 1px solid var(--primary-pink); color: #D896A3; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; background: #FFF; }
 
-        /* 按鈕 */
         .button-group { display: flex; gap: 15px; margin-top: 50px; }
-        .btn {
-            flex: 1; padding: 16px; border-radius: 35px;
-            text-align: center; font-weight: 700; cursor: pointer;
-            transition: 0.3s; border: none; font-size: 1rem;
-        }
+        .btn { flex: 1; padding: 16px; border-radius: 35px; text-align: center; font-weight: 700; cursor: pointer; border: none; font-size: 1rem; }
         .btn-main { background: var(--primary-pink); color: white; }
         .btn-line { border: 2px solid var(--primary-pink); color: var(--primary-pink); background: transparent; }
 
-        /* --- 音樂播放器 --- */
+        /* --- 改版：蝴蝶播放器 --- */
         .music-player {
-            width: 100%;
-            max-width: 800px;
-            background: white;
-            padding: 30px;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            box-shadow: 10px 10px 30px rgba(0,0,0,0.03);
+            width: 100%; max-width: 800px;
+            background: var(--glass-pink); /* 半透明淡粉色背景 */
+            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+            padding: 30px; border-radius: 30px;
+            display: flex; align-items: center; gap: 40px;
+            box-shadow: 0 10px 30px rgba(248, 200, 220, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
+        .butterfly-container {
+            width: 130px; height: 130px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        }
+
+        /* 蝴蝶形狀裁剪 */
         .album-img {
-            width: 120px; height: 120px;
-            border-radius: 50%; object-fit: cover;
-            border: 5px solid #fff;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 100%; height: 100%;
+            object-fit: cover;
+            clip-path: polygon(50% 30%, 100% 0%, 80% 50%, 100% 100%, 50% 70%, 0% 100%, 20% 50%, 0% 0%);
+            transition: 0.5s ease;
         }
 
         .player-info { flex: 1; }
-        .player-info h2 { font-size: 1.4rem; color: #333; }
-        .player-info p { color: #999; font-size: 0.9rem; }
+        .player-info h2 { font-size: 1.5rem; color: #4A4A4A; font-weight: 700; }
+        
+        .progress-container { height: 6px; background: rgba(255, 255, 255, 0.5); border-radius: 10px; margin: 20px 0; overflow: hidden; cursor: pointer; }
+        .progress-fill { height: 100%; width: 0%; background: #ffffff; }
 
-        .progress-container {
-            height: 6px; background: #EEE;
-            border-radius: 10px; margin: 15px 0;
-            overflow: hidden;
-        }
-        .progress-fill {
-            height: 100%; width: 0%;
-            background: linear-gradient(90deg, var(--primary-pink), #B3E5FC);
-        }
+        .controls { display: flex; gap: 25px; align-items: center; }
+        .control-btn { background: none; border: none; color: #fff; cursor: pointer; font-size: 1.4rem; transition: 0.3s; }
+        .control-btn:hover { transform: scale(1.1); color: var(--primary-pink); }
+        .play-toggle { font-size: 2.5rem; color: #fff; }
 
-        .controls { display: flex; gap: 20px; align-items: center; }
-        .control-btn { background: none; border: none; color: #CCC; cursor: pointer; font-size: 1.2rem; transition: 0.3s; }
-        .control-btn:hover { color: var(--primary-pink); }
-        .play-toggle { font-size: 2rem; color: #87CEFA; }
-
-        /* RWD 手機版切換 */
         @media (max-width: 600px) {
-            .resume-card, .music-player { padding: 25px; }
-            .content-row { flex-direction: column; }
-            .content-right .date { text-align: left; margin-top: 5px; }
-            .skills-container { flex-direction: column; }
             .music-player { flex-direction: column; text-align: center; }
             .controls { justify-content: center; }
-            .button-group { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
     <div class="resume-card">
-        <!-- 粉色頂部區 -->
         <header class="pink-header">
             <div class="profile-pic-container">
-                <!-- 確認妳的資料夾裡有 profile.jpg -->
                 <img src="profile.jpg" alt="Jaycie Yang">
             </div>
             <h1 class="name">楊凱茜</h1>
@@ -254,18 +169,15 @@
             <p class="english-name">JAYCIE YANG</p>
         </header>
 
-        <!-- 聯絡區 -->
         <section class="contact-section">
             <div class="contact-item"><i class="fas fa-envelope"></i> cassie.yang@asia.edu.tw</div>
             <div class="contact-item"><i class="fas fa-phone"></i> 0966-222-371</div>
             <div class="contact-item"><i class="fab fa-instagram"></i> yks._.cathy</div>
-            
             <p class="bio-text">
                 對時尚產業充滿熱情，擅長色彩美學與敘事性設計。目前致力於提升裁縫工藝與流行趨勢分析能力，追求實用與個人風格的完美平衡。
             </p>
         </section>
 
-        <!-- 教育區 -->
         <section>
             <h2 class="section-title">EDUCATION</h2>
             <div class="content-row">
@@ -277,13 +189,10 @@
                         <li>參與校內時尚週創意工作坊，負責視覺企劃。</li>
                     </ul>
                 </div>
-                <div class="content-right">
-                    <p class="date">2023 - Present</p>
-                </div>
+                <div class="content-right"><p class="date">2023 - Present</p></div>
             </div>
         </section>
 
-        <!-- 經歷區 -->
         <section>
             <h2 class="section-title">EXPERIENCE</h2>
             <div class="content-row">
@@ -295,59 +204,49 @@
                         <li>協助科普手作推廣活動，負責視覺材料準備。</li>
                     </ul>
                 </div>
-                <div class="content-right">
-                    <p class="date">2023.01 - 至今</p>
-                </div>
+                <div class="content-right"><p class="date">2023.01 - 至今</p></div>
             </div>
         </section>
 
-        <!-- 技能區 -->
         <section>
             <h2 class="section-title">SKILLS</h2>
             <div class="skills-container">
                 <div class="skill-box">
                     <h4>DESIGN</h4>
                     <div class="tag-group">
-                        <span class="tag">色彩搭配</span>
-                        <span class="tag">服裝畫手繪</span>
-                        <span class="tag">版型基礎</span>
+                        <span class="tag">色彩搭配</span><span class="tag">服裝畫手繪</span><span class="tag">版型基礎</span>
                     </div>
                 </div>
                 <div class="skill-box">
                     <h4>DIGITAL</h4>
                     <div class="tag-group">
-                        <span class="tag">HTML / CSS</span>
-                        <span class="tag">MS Office</span>
-                        <span class="tag">影像編輯</span>
+                        <span class="tag">HTML / CSS</span><span class="tag">MS Office</span><span class="tag">影像編輯</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 按鈕區 -->
         <div class="button-group">
             <button class="btn btn-main">瀏覽作品集</button>
             <button class="btn btn-line">列印履歷</button>
         </div>
     </div>
 
-    <!-- 音樂播放器 -->
+    <!-- 蝴蝶與半透明播放器 -->
     <div class="music-player">
-        <img src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&w=300&q=80" class="album-img" alt="Album">
+        <div class="butterfly-container">
+            <img id="album-img" src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=300" class="album-img">
+        </div>
         <div class="player-info">
-            <p style="letter-spacing: 2px; font-size: 10px; margin-bottom: 5px;">JAYCIE'S PICK</p>
-            <h2>Sweet</h2>
-            <p>Cassie's Playlist</p>
-            <div class="progress-container">
-                <div class="progress-fill" id="progress"></div>
-            </div>
+            <p style="letter-spacing: 3px; font-size: 11px; color: #fff; margin-bottom: 5px; font-weight: 700;">NOW PLAYING</p>
+            <h2 id="song-title">Sweet</h2>
+            <div class="progress-container"><div class="progress-fill" id="progress"></div></div>
             <div class="controls">
-                <button class="control-btn"><i class="fas fa-backward"></i></button>
+                <button class="control-btn" id="prev"><i class="fas fa-backward"></i></button>
                 <button class="control-btn play-toggle" id="playBtn"><i class="fas fa-play"></i></button>
-                <button class="control-btn"><i class="fas fa-forward"></i></button>
+                <button class="control-btn" id="next"><i class="fas fa-forward"></i></button>
             </div>
         </div>
-        <!-- 請確保 music 資料夾有 sweet.mp3 -->
         <audio id="audio" src="music/sweet.mp3"></audio>
     </div>
 
@@ -355,20 +254,59 @@
         const audio = document.getElementById('audio');
         const playBtn = document.getElementById('playBtn');
         const progress = document.getElementById('progress');
+        const songTitle = document.getElementById('song-title');
+        const albumImg = document.getElementById('album-img');
+
+        // 檔名設定
+        const songs = [
+            { title: "Sweet", file: "music/sweet.mp3", img: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=300" },
+            { title: "Moon", file: "music/moon.mp3", img: "https://images.unsplash.com/photo-1514525253344-a812ca920d3e?w=300" },
+            { title: "Dance", file: "music/dance.mp3", img: "https://images.unsplash.com/photo-1459749411177-042180ce673c?w=300" }
+        ];
+
+        let songIndex = 0;
+
+        function loadSong(song) {
+            songTitle.innerText = song.title;
+            audio.src = song.file;
+            albumImg.src = song.img;
+        }
 
         playBtn.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
                 playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                albumImg.style.transform = "scale(1.1)";
             } else {
                 audio.pause();
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                albumImg.style.transform = "scale(1)";
             }
+        });
+
+        document.getElementById('next').addEventListener('click', () => {
+            songIndex = (songIndex + 1) % songs.length;
+            loadSong(songs[songIndex]);
+            audio.play();
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            songIndex = (songIndex - 1 + songs.length) % songs.length;
+            loadSong(songs[songIndex]);
+            audio.play();
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
         });
 
         audio.addEventListener('timeupdate', () => {
             const percentage = (audio.currentTime / audio.duration) * 100;
             progress.style.width = percentage + '%';
+        });
+
+        audio.addEventListener('ended', () => {
+            songIndex = (songIndex + 1) % songs.length;
+            loadSong(songs[songIndex]);
+            audio.play();
         });
     </script>
 </body>
