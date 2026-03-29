@@ -413,6 +413,41 @@
     color: #87CEFA; /* 淺藍色播放鈕 */
     font-size: 20px;
 }
+/* --- 手機版適應補丁 (RWD) --- */
+@media (max-width: 768px) {
+    .music-container {
+        flex-direction: column; /* 讓內容從橫的變成直的 */
+        padding: 30px 20px;
+        width: 95%; /* 讓它寬一點比較大氣 */
+        gap: 20px;
+        text-align: center; /* 文字置中 */
+    }
+
+    .mega-album-cover {
+        width: 180px; /* 手機上圖片小一點 */
+        height: 180px;
+        margin: 0 auto;
+    }
+
+    .vinyl-record {
+        display: none; /* 手機版隱藏黑膠唱片裝飾，避免擋到字 */
+    }
+
+    .song-details h2 {
+        font-size: 24px; /* 標題縮小一點點 */
+    }
+
+    .mega-controls {
+        justify-content: center; /* 按鈕置中 */
+        width: 100%;
+    }
+
+    .bg-text {
+        font-size: 60px; /* 背景裝飾文字縮小 */
+        bottom: 5px;
+        right: 10px;
+    }
+}
     </style>
 </head>
 <body>
