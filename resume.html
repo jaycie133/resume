@@ -451,46 +451,39 @@
     </style>
 </head>
 <body>
-<section class="mega-music-section">
-        <div class="music-container">
-            
-            <div class="album-art-wrapper">
-                <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=500" alt="Sweet Cover" class="mega-album-cover" id="album-cover">
-                <div class="vinyl-record"></div> </div>
+<!-- 1. 妳的履歷內容 (請把妳原本寫好的學經歷、照片、自我介紹全部貼在這邊) -->
+    <!-- 如果妳忘了原本寫什麼，請按 Cmd+Z 找回來貼在這裡 -->
 
+    <!-- 2. 音樂播放器 (固定在最下面) -->
+    <section class="mega-music-section">
+        <div class="music-container">
+            <div class="album-art-wrapper">
+                <img id="album-cover" src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="mega-album-cover">
+                <div class="vinyl-record"></div>
+            </div>
             <div class="music-content">
-                <div class="player-header">
-                    <i class="fas fa-headphones-alt"></i> <span>Jaycie's Pick</span>
-                </div>
-                
+                <div class="player-header"><i class="fas fa-headphones-alt"></i> Jaycie's Pick</div>
                 <div class="song-details">
                     <h2 id="song-title">Sweet</h2>
-                    <p id="song-artist">楊凱茜's Playlist</p>
+                    <p>楊凱茜's Playlist</p>
                 </div>
-
-                <audio id="main-audio" src="music/sweet.mp3"></audio>
-
                 <div class="mega-progress-container">
-                    <span class="current-time">0:00</span>
-                    <div class="progress-area">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <span class="max-duration">0:00</span>
+                    <span>0:00</span>
+                    <div class="progress-area"><div class="progress-bar"></div></div>
+                    <span>0:00</span>
                 </div>
-
                 <div class="mega-controls">
-                    <button id="prev-btn" class="mega-btn"><i class="fas fa-backward"></i></button>
+                    <button class="mega-btn"><i class="fas fa-backward"></i></button>
                     <button id="play-pause-btn" class="mega-btn play-pause-btn"><i class="fas fa-play"></i></button>
-                    <button id="next-btn" class="mega-btn"><i class="fas fa-forward"></i></button>
+                    <button class="mega-btn"><i class="fas fa-forward"></i></button>
                 </div>
             </div>
-            
             <div class="bg-text">MUSIC</div>
         </div>
+        <audio id="main-audio" src="music/sweet.mp3"></audio>
     </section>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<!-- 1. 讓按鈕動起來的腳本 -->
+
+    <!-- 3. 控制音樂的大腦 -->
     <script>
         const audio = document.querySelector("#main-audio");
         const playPauseBtn = document.querySelector("#play-pause-btn");
@@ -506,7 +499,6 @@
                     playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
                 }
             };
-
             audio.ontimeupdate = (e) => {
                 const { currentTime, duration } = e.target;
                 if (duration) {
@@ -516,6 +508,6 @@
         }
     </script>
 
-    <!-- 2. 補回妳消失的網頁結尾標籤 -->
 </body>
 </html>
+    
