@@ -319,6 +319,103 @@
             </div>
         </main>
     </div>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>楊凱茜的履歷</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
 
+    <div class="apple-music-player">
+        <div class="player-header">
+            <i class="fas fa-headphones-alt"></i> <span>NOW PLAYING</span>
+        </div>
+        
+        <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=300" alt="Album Cover" class="album-cover" id="album-cover">
+        
+        <div class="song-info">
+            <h3 id="song-title">Sweet</h3>
+            <p id="song-artist">楊凱茜's Playlist</p>
+        </div>
+
+        <audio id="main-audio" src="music/sweet.mp3"></audio>
+
+        <div class="progress-area">
+            <div class="progress-bar"></div>
+        </div>
+
+        <div class="controls">
+            <button id="prev-btn" class="control-btn"><i class="fas fa-backward"></i></button>
+            <button id="play-pause-btn" class="control-btn play-pause"><i class="fas fa-play"></i></button>
+            <button id="next-btn" class="control-btn"><i class="fas fa-forward"></i></button>
+        </div>
+    </div>
+
+    <script>
+        // ... (這裡的 JavaScript 代碼跟上一次給妳的一模一樣，不需要修改) ...
+        const allMusic = [
+            { name: "Sweet", src: "music/sweet.mp3", cover: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=300" },
+            { name: "Dance", src: "music/dance.mp3", cover: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=300" },
+            { name: "Moon", src: "music/moon.mp3", cover: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=300" }
+        ];
+
+        const audio = document.querySelector("#main-audio");
+        const playPauseBtn = document.querySelector("#play-pause-btn");
+        const prevBtn = document.querySelector("#prev-btn");
+        const nextBtn = document.querySelector("#next-btn");
+        const songTitle = document.querySelector("#song-title");
+        const albumCover = document.querySelector("#album-cover");
+        const progressBar = document.querySelector(".progress-bar");
+        const progressArea = document.querySelector(".progress-area");
+
+        let musicIndex = 0;
+
+        function loadMusic(index) {
+            songTitle.innerText = allMusic[index].name;
+            albumCover.src = allMusic[index].cover;
+            audio.src = allMusic[index].src;
+        }
+
+        playPauseBtn.onclick = () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        };
+
+        nextBtn.onclick = () => {
+            musicIndex = (musicIndex + 1) % allMusic.length;
+            loadMusic(musicIndex);
+            audio.play();
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        };
+
+        prevBtn.onclick = () => {
+            musicIndex = (musicIndex - 1 + allMusic.length) % allMusic.length;
+            loadMusic(musicIndex);
+            audio.play();
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        };
+
+        audio.ontimeupdate = (e) => {
+            const { currentTime, duration } = e.target;
+            if (duration) {
+                progressBar.style.width = `${(currentTime / duration) * 100}%`;
+            }
+        };
+
+        // 網頁載入時先載入第一首歌
+        window.addEventListener("load", () => {
+            loadMusic(musicIndex);
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>
