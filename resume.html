@@ -13,7 +13,9 @@
             --white: #ffffff;
             --dark-grey: #5D5D5D;
             --accent-yellow: #FEF3C7;
-            --glass-pink: rgba(248, 200, 220, 0.4);
+            --glass-pink: rgba(248, 200, 220, 0.4); /* 半透明粉 */
+            /* ✅ 定義粉藍漸變變數，方便多處使用 */
+            --pink-blue-gradient: linear-gradient(135deg, #F8C8DC 0%, #B3E5FC 100%);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -69,7 +71,7 @@
 
         .english-name {
             font-family: 'Montserrat', sans-serif;
-            color: #d92d72; 
+            color: #ef3b83; 
             letter-spacing: 3px;
             font-size: 1.1rem; 
             font-weight: 500;
@@ -116,16 +118,15 @@
         .btn-main { background: var(--primary-pink); color: white; }
         .btn-line { border: 2px solid var(--primary-pink); color: var(--primary-pink); background: transparent; }
 
-        /* --- 蝴蝶播放器核心樣式 --- */
+        /* --- 蝴蝶播放器 (更新：純漸變蝴蝶) --- */
         .music-player {
             width: 100%; max-width: 800px;
-            background: var(--glass-pink); /* 半透明淡粉背景 */
-            backdrop-filter: blur(10px); /* 毛玻璃效果 */
+            background: var(--glass-pink); /* 半透明粉背景 */
+            backdrop-filter: blur(10px);
             padding: 30px; border-radius: 30px;
             display: flex; align-items: center; gap: 40px;
             box-shadow: 0 10px 30px rgba(248, 200, 220, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: opacity 0.3s ease;
         }
 
         .butterfly-container {
@@ -134,34 +135,34 @@
             display: flex; justify-content: center; align-items: center;
         }
 
-        /* ✨ 蝴蝶形狀裁剪代碼 (核心) */
-        .butterfly-shape {
+        /* ✅ 這就是妳要的：純粉藍漸變蝴蝶 */
+        .butterfly-gradient-shape {
             width: 100%; height: 100%;
-            object-fit: cover;
+            background: var(--pink-blue-gradient); /* 使用定義好的粉藍漸變 */
+            /* 蝴蝶形狀裁剪 */
             clip-path: polygon(50% 30%, 100% 0%, 80% 50%, 100% 100%, 50% 70%, 0% 100%, 20% 50%, 0% 0%);
-            transition: transform 0.3s ease, clip-path 0.3s ease; /* 換圖時平滑 */
+            transition: transform 0.3s ease;
         }
 
         .player-info { flex: 1; }
-        .player-info h2 { font-size: 1.5rem; color: #4A4A4A; font-weight: 700; }
+        .player-info h2 { font-size: 1.5rem; color: #4A4A4A; font-weight: 700; margin-bottom: 10px; }
         
-        .progress-container { height: 6px; background: rgba(255, 255, 255, 0.5); border-radius: 10px; margin: 20px 0; overflow: hidden; cursor: pointer; }
-        
-        /* ✅ 進度條改成粉藍漸變 */
+        .progress-container { height: 8px; background: rgba(255, 255, 255, 0.5); border-radius: 10px; margin: 20px 0; overflow: hidden; cursor: pointer; }
+        /* ✅ 進度條也保持粉藍漸變 */
         .progress-fill { 
             height: 100%; width: 0%; 
-            background: linear-gradient(90deg, #F8C8DC 0%, #B3E5FC 100%); /* 粉紅變淺藍 */
-            transition: width 0.1s linear; 
+            background: linear-gradient(90deg, #F8C8DC 0%, #B3E5FC 100%); 
         }
 
         .controls { display: flex; gap: 25px; align-items: center; }
-        .control-btn { background: none; border: none; color: #fff; cursor: pointer; font-size: 1.4rem; transition: 0.3s; }
+        .control-btn { background: none; border: none; color: #fff; cursor: pointer; font-size: 1.6rem; transition: 0.3s; }
         .control-btn:hover { transform: scale(1.1); color: var(--primary-pink); }
-        .play-toggle { font-size: 2.5rem; color: #fff; }
+        .play-toggle { font-size: 2.8rem; color: #fff; }
 
         @media (max-width: 600px) {
-            .music-player { flex-direction: column; text-align: center; }
+            .music-player { flex-direction: column; text-align: center; gap: 20px; }
             .controls { justify-content: center; }
+            .butterfly-container { width: 100px; height: 100px; } /* 手機版縮小一點 */
         }
     </style>
 </head>
@@ -169,9 +170,7 @@
 
     <div class="resume-card">
         <header class="pink-header">
-            <div class="profile-pic-container">
-                <img src="profile.jpg" alt="Jaycie Yang">
-            </div>
+            <div class="profile-pic-container"><img src="profile.jpg" alt="Jaycie Yang"></div>
             <h1 class="name">楊凱茜</h1>
             <div class="id-badge">ID: 114054044</div>
             <p class="english-name">JAYCIE YANG</p>
@@ -242,7 +241,7 @@
 
     <div class="music-player">
         <div class="butterfly-container">
-            <img id="album-img" src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=300" class="butterfly-shape">
+            <div id="butterfly-shape" class="butterfly-gradient-shape"></div>
         </div>
         <div class="player-info">
             <p style="letter-spacing: 3px; font-size: 11px; color: #fff; margin-bottom: 5px; font-weight: 700;">NOW PLAYING</p>
@@ -262,45 +261,33 @@
         const playBtn = document.getElementById('playBtn');
         const progress = document.getElementById('progress');
         const songTitle = document.getElementById('song-title');
-        const albumImg = document.getElementById('album-img');
+        const butterflyShape = document.getElementById('butterfly-shape'); // 獲取蝴蝶形狀元素
 
-        // 檔名設定
+        // 檔名設定保持不變，但移除了 img 資料
         const songs = [
-            { title: "Sweet", file: "music/sweet.mp3", img: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=300" },
-            { title: "Moon", file: "music/moon.mp3", img: "https://images.unsplash.com/photo-1514525253344-a812ca920d3e?w=300" },
-            { title: "Dance", file: "music/dance.mp3", img: "https://images.unsplash.com/photo-1459749411177-042180ce673c?w=300" }
+            { title: "Sweet", file: "music/sweet.mp3" },
+            { title: "Moon", file: "music/moon.mp3" },
+            { title: "Dance", file: "music/dance.mp3" }
         ];
 
         let songIndex = 0;
 
-        // ✅ 修改過的 loadSong 函數，確保蝴蝶形狀和照片都有換
         function loadSong(song) {
             songTitle.innerText = song.title;
-            
-            // 在換圖前先將 CSS class 刪除，確保下一張圖能平滑地加回來
-            albumImg.classList.remove('butterfly-shape');
-            
-            // 換圖片路徑
             audio.src = song.file;
-            albumImg.src = song.img;
-            
-            // ✨ 重新強制加入蝴蝶形狀，確保 Moon 和 Dance 也都有蝴蝶型
-            // 使用 setTimeout 讓瀏覽器有時間先刪除再加入，確保 clip-path 重新繪製
-            setTimeout(() => {
-                albumImg.classList.add('butterfly-shape');
-            }, 10);
+            // ✅ 切換歌曲時，蝴蝶形狀不再需要更換圖片，保持純漸變即可
         }
 
         playBtn.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
                 playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                // 播放時蝴蝶微微放大
-                albumImg.style.transform = "scale(1.05)";
+                // 播放時蝴蝶微微放大，更有律動感
+                butterflyShape.style.transform = "scale(1.05)";
             } else {
                 audio.pause();
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                albumImg.style.transform = "scale(1)";
+                butterflyShape.style.transform = "scale(1)";
             }
         });
 
@@ -309,6 +296,7 @@
             loadSong(songs[songIndex]);
             audio.play();
             playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            butterflyShape.style.transform = "scale(1.05)";
         });
 
         document.getElementById('prev').addEventListener('click', () => {
@@ -316,6 +304,7 @@
             loadSong(songs[songIndex]);
             audio.play();
             playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            butterflyShape.style.transform = "scale(1.05)";
         });
 
         audio.addEventListener('timeupdate', () => {
