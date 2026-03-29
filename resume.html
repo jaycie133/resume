@@ -13,7 +13,7 @@
             --white: #ffffff;
             --dark-grey: #5D5D5D;
             --accent-yellow: #FEF3C7;
-            --glass-pink: rgba(248, 200, 220, 0.4); /* 半透明粉 */
+            --glass-pink: rgba(248, 200, 220, 0.4);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,7 +28,7 @@
             min-height: 100vh;
         }
 
-        /* --- 履歷卡片 --- */
+        /* --- 履歷卡片 (保持妳的原創設計) --- */
         .resume-card {
             width: 100%;
             max-width: 800px;
@@ -69,7 +69,7 @@
 
         .english-name {
             font-family: 'Montserrat', sans-serif;
-            color: #EAB8CC; 
+            color: #d92d72; 
             letter-spacing: 3px;
             font-size: 1.1rem; 
             font-weight: 500;
@@ -116,35 +116,43 @@
         .btn-main { background: var(--primary-pink); color: white; }
         .btn-line { border: 2px solid var(--primary-pink); color: var(--primary-pink); background: transparent; }
 
-        /* --- 改版：蝴蝶播放器 --- */
+        /* --- 蝴蝶播放器核心樣式 --- */
         .music-player {
             width: 100%; max-width: 800px;
-            background: var(--glass-pink); /* 半透明淡粉色背景 */
+            background: var(--glass-pink); /* 半透明淡粉背景 */
             backdrop-filter: blur(10px); /* 毛玻璃效果 */
             padding: 30px; border-radius: 30px;
             display: flex; align-items: center; gap: 40px;
             box-shadow: 0 10px 30px rgba(248, 200, 220, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: opacity 0.3s ease;
         }
 
         .butterfly-container {
             width: 130px; height: 130px;
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+            display: flex; justify-content: center; align-items: center;
         }
 
-        /* 蝴蝶形狀裁剪 */
-        .album-img {
+        /* ✨ 蝴蝶形狀裁剪代碼 (核心) */
+        .butterfly-shape {
             width: 100%; height: 100%;
             object-fit: cover;
             clip-path: polygon(50% 30%, 100% 0%, 80% 50%, 100% 100%, 50% 70%, 0% 100%, 20% 50%, 0% 0%);
-            transition: 0.5s ease;
+            transition: transform 0.3s ease, clip-path 0.3s ease; /* 換圖時平滑 */
         }
 
         .player-info { flex: 1; }
         .player-info h2 { font-size: 1.5rem; color: #4A4A4A; font-weight: 700; }
         
         .progress-container { height: 6px; background: rgba(255, 255, 255, 0.5); border-radius: 10px; margin: 20px 0; overflow: hidden; cursor: pointer; }
-        .progress-fill { height: 100%; width: 0%; background: #ffffff; }
+        
+        /* ✅ 進度條改成粉藍漸變 */
+        .progress-fill { 
+            height: 100%; width: 0%; 
+            background: linear-gradient(90deg, #F8C8DC 0%, #B3E5FC 100%); /* 粉紅變淺藍 */
+            transition: width 0.1s linear; 
+        }
 
         .controls { display: flex; gap: 25px; align-items: center; }
         .control-btn { background: none; border: none; color: #fff; cursor: pointer; font-size: 1.4rem; transition: 0.3s; }
@@ -232,10 +240,9 @@
         </div>
     </div>
 
-    <!-- 蝴蝶與半透明播放器 -->
     <div class="music-player">
         <div class="butterfly-container">
-            <img id="album-img" src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=300" class="album-img">
+            <img id="album-img" src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=300" class="butterfly-shape">
         </div>
         <div class="player-info">
             <p style="letter-spacing: 3px; font-size: 11px; color: #fff; margin-bottom: 5px; font-weight: 700;">NOW PLAYING</p>
@@ -266,17 +273,30 @@
 
         let songIndex = 0;
 
+        // ✅ 修改過的 loadSong 函數，確保蝴蝶形狀和照片都有換
         function loadSong(song) {
             songTitle.innerText = song.title;
+            
+            // 在換圖前先將 CSS class 刪除，確保下一張圖能平滑地加回來
+            albumImg.classList.remove('butterfly-shape');
+            
+            // 換圖片路徑
             audio.src = song.file;
             albumImg.src = song.img;
+            
+            // ✨ 重新強制加入蝴蝶形狀，確保 Moon 和 Dance 也都有蝴蝶型
+            // 使用 setTimeout 讓瀏覽器有時間先刪除再加入，確保 clip-path 重新繪製
+            setTimeout(() => {
+                albumImg.classList.add('butterfly-shape');
+            }, 10);
         }
 
         playBtn.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
                 playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                albumImg.style.transform = "scale(1.1)";
+                // 播放時蝴蝶微微放大
+                albumImg.style.transform = "scale(1.05)";
             } else {
                 audio.pause();
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
