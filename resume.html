@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        :root 
+        :root {
             --primary-pink: #F8C8DC;
             --white: #ffffff;
             --dark-grey: #5D5D5D;
@@ -30,7 +30,7 @@
             min-height: 100vh;
         }
 
-        /* --- 履歷卡片 (保持妳的原創設計) --- */
+        /* --- 履歷卡片 --- */
         .resume-card {
             width: 100%;
             max-width: 800px;
@@ -118,10 +118,10 @@
         .btn-main { background: var(--primary-pink); color: white; }
         .btn-line { border: 2px solid var(--primary-pink); color: var(--primary-pink); background: transparent; }
 
-        /* --- 蝴蝶播放器 (更新：純漸變蝴蝶) --- */
+        /* --- 蝴蝶播放器 --- */
         .music-player {
             width: 100%; max-width: 800px;
-            background: var(--glass-pink); /* 半透明粉背景 */
+            background: var(--glass-pink); 
             backdrop-filter: blur(10px);
             padding: 30px; border-radius: 30px;
             display: flex; align-items: center; gap: 40px;
@@ -135,11 +135,9 @@
             display: flex; justify-content: center; align-items: center;
         }
 
-        /* ✅ 這就是妳要的：純粉藍漸變蝴蝶 */
         .butterfly-gradient-shape {
             width: 100%; height: 100%;
-            background: var(--pink-blue-gradient); /* 使用定義好的粉藍漸變 */
-            /* 蝴蝶形狀裁剪 */
+            background: var(--pink-blue-gradient); 
             clip-path: polygon(50% 30%, 100% 0%, 80% 50%, 100% 100%, 50% 70%, 0% 100%, 20% 50%, 0% 0%);
             transition: transform 0.3s ease;
         }
@@ -148,7 +146,6 @@
         .player-info h2 { font-size: 1.5rem; color: #4A4A4A; font-weight: 700; margin-bottom: 10px; }
         
         .progress-container { height: 8px; background: rgba(255, 255, 255, 0.5); border-radius: 10px; margin: 20px 0; overflow: hidden; cursor: pointer; }
-        /* ✅ 進度條也保持粉藍漸變 */
         .progress-fill { 
             height: 100%; width: 0%; 
             background: linear-gradient(90deg, #F8C8DC 0%, #B3E5FC 100%); 
@@ -162,7 +159,7 @@
         @media (max-width: 600px) {
             .music-player { flex-direction: column; text-align: center; gap: 20px; }
             .controls { justify-content: center; }
-            .butterfly-container { width: 100px; height: 100px; } /* 手機版縮小一點 */
+            .butterfly-container { width: 100px; height: 100px; }
         }
     </style>
 </head>
@@ -170,16 +167,16 @@
 
     <div class="resume-card">
         <header class="pink-header">
-            <div class="profile-pic-container"><img src="profile.jpg" alt="Jaycie Yeo"></div>
+            <div class="profile-pic-container"><img src="profile.jpg" alt="Jaycie Yang"></div>
             <h1 class="name">楊凱茜</h1>
             <div class="id-badge">ID: 114054044</div>
-            <p class="english-name">JAYCIE YEO</p>
+            <p class="english-name">JAYCIE YANG</p>
         </header>
 
         <section class="contact-section">
-            <div class="contact-item"><i class="fas fa-envelope"></i> 114054044@live.asia.edu.tw</div>
-            <div class="contact-item"><i class="fas fa-phone"></i> 0922-222-771</div>
-            <div class="contact-item"><i class="fab fa-instagram"></i> jayciey_13</div>
+            <div class="contact-item"><i class="fas fa-envelope"></i> cassie.yang@asia.edu.tw</div>
+            <div class="contact-item"><i class="fas fa-phone"></i> 0966-222-371</div>
+            <div class="contact-item"><i class="fab fa-instagram"></i> yks._.cathy</div>
             <p class="bio-text">
                 對時尚產業充滿熱情，擅長色彩美學與敘事性設計。目前致力於提升裁縫工藝與流行趨勢分析能力，追求實用與個人風格的完美平衡。
             </p>
@@ -192,8 +189,8 @@
                     <h3>亞洲大學 Asia University</h3>
                     <p class="sub-title">時尚設計學系 | 一年級</p>
                     <ul class="details-list">
-                        <li>專攻服裝精品、色彩學及基礎立體剪裁。</li>
-                        <li>參與校內時尚週創意工作坊。</li>
+                        <li>專攻服裝構成、色彩學及基礎立體剪裁。</li>
+                        <li>參與校內時尚週創意工作坊，負責視覺企劃。</li>
                     </ul>
                 </div>
                 <div class="content-right"><p class="date">2023 - Present</p></div>
@@ -204,11 +201,11 @@
             <h2 class="section-title">TARGET</h2>
             <div class="content-row">
                 <div class="content-left">
-                    <h3>自我核心發展方向</h3>
-                    <p class="sub-title">專業技能的深化 / 國際化的創新</p>
+                    <h3>專業技能深化與創新</h3>
+                    <p class="sub-title">核心發展方向</p>
                     <ul class="details-list">
-                        <li>融合永續時尚與數位設計，探索3D建模在服裝版型上的應用。</li>
-                        <li>建立具有市場辨識度的個人作品集。</li>
+                        <li>融合永續時尚與數位設計，探索 3D 建模在服裝版型上的應用。</li>
+                        <li>提升品牌企劃完整度，目標在學期間建立具市場辨識度的個人作品集。</li>
                         <li>積極參與國際時尚競賽，透過跨文化交流拓寬設計視野與審美層次。</li>
                     </ul>
                 </div>
@@ -262,9 +259,8 @@
         const playBtn = document.getElementById('playBtn');
         const progress = document.getElementById('progress');
         const songTitle = document.getElementById('song-title');
-        const butterflyShape = document.getElementById('butterfly-shape'); // 獲取蝴蝶形狀元素
+        const butterflyShape = document.getElementById('butterfly-shape');
 
-        // 檔名設定保持不變，但移除了 img 資料
         const songs = [
             { title: "Sweet", file: "music/sweet.mp3" },
             { title: "Moon", file: "music/moon.mp3" },
@@ -276,14 +272,12 @@
         function loadSong(song) {
             songTitle.innerText = song.title;
             audio.src = song.file;
-            // ✅ 切換歌曲時，蝴蝶形狀不再需要更換圖片，保持純漸變即可
         }
 
         playBtn.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
                 playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                // 播放時蝴蝶微微放大，更有律動感
                 butterflyShape.style.transform = "scale(1.05)";
             } else {
                 audio.pause();
